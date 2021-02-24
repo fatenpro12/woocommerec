@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Product extends Model
+class Product extends Model implements HasMedia
 {
+    use HasMediaTrait;
     use HasFactory,SoftDeletes;
     protected $fillable=['title','decription','options','discount','price','stock','address_id','unit_id'];
 
@@ -16,6 +19,8 @@ class Product extends Model
         'decription'=>'array',
         'options'=>'array'
     ];
+
+    protected $appends =['photos'];
     public function setOptionsAttribute($value)
     {
         $options = [];
@@ -27,6 +32,14 @@ class Product extends Model
         }
 
         $this->attributes['options'] = json_encode($options);
+    }
+    public function registerMediaCollections()
+    {
+        $this->addMediaCollection('photos');
+    }
+    public function getPhotosAttribute()
+    {
+        return $this->getMedia('photos');
     }
     public function address()
     {
