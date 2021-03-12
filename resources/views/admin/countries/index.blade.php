@@ -13,7 +13,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="row pl-3 pr-3 pl-md-0">
-                        <a href="{{ route('add-country') }}" class="btn btn-primary ">
+                        <a href="{{ route('country.create') }}" class="btn btn-primary ">
                             Add Country
                         </a>
                     </div>

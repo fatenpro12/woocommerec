@@ -12,34 +12,50 @@ class Product extends Model implements HasMedia
 {
     use HasMediaTrait;
     use HasFactory,SoftDeletes;
-    protected $fillable=['title','decription','options','discount','price','stock','address_id','unit_id'];
+    protected $fillable=['title','decription','options','discount','price','stock','address_id','unit_id','category_id'];
 
     protected $casts=[
-        'title'=>'array',
-        'decription'=>'array',
         'options'=>'array'
     ];
 
-    protected $appends =['photos'];
+    protected $appends =['main-image','photos'];
+
+    public function setTitleAttribute($value) {
+        $this->attributes['title'] = json_encode($value,JSON_UNESCAPED_UNICODE);
+    }
+    public function getTitleAttribute($value){
+        return json_decode($value);
+    }
+    public function setDescriptionAttribute($value) {
+        $this->attributes['description'] = json_encode($value,JSON_UNESCAPED_UNICODE);
+    }
+    public function getDescriptionAttribute($value){
+        return json_decode($value);
+    }
     public function setOptionsAttribute($value)
     {
         $options = [];
 
-        foreach ($value as $array_item) {
+       /* foreach ($value as $array_item) {
             if (!is_null($array_item['key'])) {
                 $options[] = $array_item;
             }
-        }
+        }*/
 
-        $this->attributes['options'] = json_encode($options);
+        $this->attributes['options'] = json_encode($value);
     }
     public function registerMediaCollections()
     {
+        $this->addMediaCollection('main_image')->singleFile();
         $this->addMediaCollection('photos');
     }
     public function getPhotosAttribute()
     {
         return $this->getMedia('photos');
+    }
+    public function getMainImageAttribute()
+    {
+        return $this->getFirstMedia('main_image');
     }
     public function address()
     {

@@ -5,17 +5,17 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header card-header-primary">
-                <h4 class="card-title ">Category Table</h4>
-                <p class="card-category">Category Of Products</p>
+                <h4 class="card-title ">Address Table</h4>
+                <p class="card-category">Address Of Products</p>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    @include('admin.categories.partials.categories-table',['data' => $categories])
+                    @include('admin.addresses.partials.addresses-table',['data' => $addresses])
                 </div>
                 <div class="card-footer">
                     <div class="row pl-3 pr-3 pl-md-0">
-                        <a href="{{ route('category.create') }}" class="btn btn-primary ">
-                            Add Category
+                        <a href="{{ route('address.create') }}" class="btn btn-primary ">
+                            Add Address
                         </a>
                     </div>
                 </div>

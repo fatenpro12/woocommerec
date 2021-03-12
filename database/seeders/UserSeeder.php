@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
             'name' => 'Super',
             'email' => 'admin@admin.io',
             'password' => bcrypt('123456'),
+            'mobile'=> '015454545',
 
             //  'confirmed_at' => Carbon::now(),
             'created_at' => Carbon::now(),

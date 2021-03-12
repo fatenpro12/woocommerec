@@ -1,5 +1,5 @@
 
-<table id="categories" class="table table-striped table-hover">
+<table id="categories" class="table table-hover">
     <thead class="text-primary">
     <th>
         Name
@@ -17,9 +17,7 @@
                 <div class="dropdown">
                     <span class="dropdown-toggle no-caret" data-toggle="dropdown"><i class="fa fa-cog"></i></span>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a href="{{route('products',$item->id)}}" class="dropdown-item" id="{{$item->id}}">
-                            Products
-                        </a>
+
                         <a href="{{asset('admin/category/edit/'.$item->id)}}" class="dropdown-item" id="{{$item->id}}">
                             Edit
                         </a>

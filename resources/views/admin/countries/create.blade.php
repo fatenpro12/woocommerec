@@ -8,7 +8,7 @@
                     <h4 class="card-title">Add Country</h4>
                 </div>
                 <div class="card-body">
-                    <form method="Post" action="{{ route('new-country') }}">
+                    <form method="Post" action="{{ route('country.store') }}">
                         @csrf
                         <div class="row">
                             <div class="col-md-8">
@@ -45,7 +45,7 @@
                             </div>
 
                         </div>
-                       
+
 
                         <button type="submit" class="btn btn-primary pull-right">Save</button>
                         <div class="clearfix"></div>

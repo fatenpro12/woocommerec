@@ -10,6 +10,7 @@
 <script src="{{asset('assets/js/plugins/jquery.validate.min.js')}}"></script>
 <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
 <script src="{{asset('assets/js/plugins/jquery.bootstrap-wizard.js')}}"></script>
+
 <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
 <script src="{{asset('assets/js/plugins/bootstrap-selectpicker.js')}}"></script>
 <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
@@ -28,6 +29,11 @@
 <script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script>
 <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<!-- Stepper JavaScript -->
+<!-- Stepper JavaScript - minified -->
 <!-- Library for adding dinamically elements -->
 <script src="{{asset('assets/js/plugins/arrive.min.js')}}"></script>
 <!--  Google Maps Plugin
@@ -38,10 +44,13 @@
 <script src="{{asset('assets/js/plugins/bootstrap-notify.js')}}"></script>
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="{{asset('assets/js/material-dashboard.js?v=2.1.2" type="text/javascript')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{asset('assets/demo/demo.js')}}"></script>
 <script>
     $(document).ready(function() {
+
         $().ready(function() {
             $sidebar = $('.sidebar');
 
@@ -218,3 +227,4 @@
 
     });
 </script>
+@stack('js')

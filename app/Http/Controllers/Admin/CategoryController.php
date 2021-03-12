@@ -4,13 +4,20 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Services\Category\ICategoryService;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    private $category_service;
+
+    public function __construct(ICategoryService $category_service)
+    {
+        $this->category_service = $category_service;
+    }
     public function index()
     {
-        $categories=Category::all();
+        $categories=$this->category_service->all();
         return view('admin.categories.index',compact('categories'));
     }
 
@@ -35,7 +42,7 @@ class CategoryController extends Controller
         $this->validate($request,[
             'name'=>'required|min:3'
         ]);
-        $category=Category::create($request->all());
+        $category=$this->category_service->create($request->all());
         return redirect()->route('categories');
     }
 
@@ -58,7 +65,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category=Category::find($id);
+        $category=$this->category_service->find($id);
         return view('admin.categories.edit',compact('category'));
     }
 
@@ -74,8 +81,7 @@ class CategoryController extends Controller
         $this->validate($request,[
             'name'=>'required|string'
         ]);
-        $category=Category::find($id);
-        $category->update($request->all());
+        $category=$this->category_service->update($id,$request->all());
         return redirect()->route('categories');
     }
 
@@ -87,8 +93,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category=Category::find($id);
-        $category->delete();
+        $category=$this->category_service->delete($id);
         return back();
     }
 }

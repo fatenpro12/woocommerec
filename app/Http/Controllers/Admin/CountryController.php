@@ -32,8 +32,8 @@ class CountryController extends Controller
         $country->code = $request->input('code');
         $country->currency = $request->input('currency');
         $country->save();
-        return redirect()->route('showcountry');
-       
+        return redirect()->route('countries');
+
     }
 
     public function showedit(Request $request , $country_id){
@@ -56,7 +56,7 @@ class CountryController extends Controller
         $country->currency = $request->input('currency');
         $country->update();
 
-        return redirect()->route('showcountry');
+        return redirect()->route('countries');
     }
 
 
@@ -64,6 +64,6 @@ class CountryController extends Controller
         $country = Country::find( $country_id );
         $country->delete();
 
-        return redirect()->route('showcountry');
+        return redirect()->route('countries');
     }
 }
