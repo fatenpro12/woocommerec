@@ -3,21 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Services\Address\IAddressService;
+use App\Services\Shipment\IShipmentService;
 use Illuminate\Http\Request;
 
-class AddressController extends Controller
+class ShippController extends Controller
 {
-    private $address_service;
+    private $shipment_service;
 
-    public function __construct(IAddressService $address_service)
+    public function __construct(IShipmentService $shipment_service)
     {
-        $this->address_service = $address_service;
+        $this->shipment_service = $shipment_service;
     }
     public function index()
     {
-        $addresses=$this->address_service->all();
-        return view('admin.addresses.index',compact('addresses'));
+        $shippments=$this->shipment_service->all();
+        return view('admin.shippments.index',compact('shippments'));
     }
 
     /**
@@ -27,7 +27,7 @@ class AddressController extends Controller
      */
     public function create()
     {
-        return view('admin.addresses.create');
+        return view('admin.shippments.create');
     }
 
     /**
@@ -38,9 +38,11 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
-
-        $address=$this->address_service->create($request->all());
-        return redirect()->route('addresses');
+        $this->validate($request,[
+            'name'=>'required|min:3'
+        ]);
+        $shipment=$this->shipment_service->create($request->all());
+        return redirect()->route('shippments');
     }
 
     /**
@@ -62,8 +64,8 @@ class AddressController extends Controller
      */
     public function edit($id)
     {
-        $address=$this->address_service->find($id);
-        return view('admin.addresses.edit',compact('address'));
+        $shippment=$this->shipment_service->find($id);
+        return view('admin.shippments.edit',compact('shippment'));
     }
 
     /**
@@ -75,9 +77,11 @@ class AddressController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $address=$this->address_service->update($id,$request->all());
-        return redirect()->route('addresses');
+        $this->validate($request,[
+            'name'=>'required|string'
+        ]);
+        $shippment=$this->shipment_service->update($id,$request->all());
+        return redirect()->route('shippments');
     }
 
     /**
@@ -88,7 +92,7 @@ class AddressController extends Controller
      */
     public function destroy($id)
     {
-        $address=$this->address_service->delete($id);
+        $shippment=$this->shipment_service->delete($id);
         return back();
     }
 }

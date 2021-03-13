@@ -29,25 +29,25 @@
 
                                                 <div class="col-md-6 form-group" style="text-align: start!important;">
                                                     <label for="nameAr" class="bmd-label-floating" style="text-align: start">{{ __('admin.street') }}</label>
-                                                    <input type="text" name="street" style="text-transform: capitalize;"  value="" class="form-control street" id="exampleInputName1">
+                                                    <input type="text" name="street" style="text-transform: capitalize;" required  value="" class="form-control street" id="exampleInputName1">
                                                 </div>
                                             </div>
                                             <div class=" row">
                                                 <div class="col-md-6 form-group" style="text-align: start!important;">
                                                     <label for="nameAr" class="bmd-label-floating" style="text-align: start">{{ __('admin.house') }}</label>
 
-                                                    <input type="text" name="house_number"  value="" class="form-control house" id="exampleInputName1">
+                                                    <input type="text" name="house_number" required  value="" class="form-control house" id="exampleInputName1">
                                                 </div>
                                                 <div class="col-md-6 form-group" style="text-align: start!important;">
                                                     <label for="nameAr" class="bmd-label-floating" style="text-align: start">{{ __('admin.post_code') }}</label>
 
-                                                    <input type="text" name="post_code" style="text-transform:uppercase"  value="" class="form-control post_code" id="exampleInputName1">
+                                                    <input type="text" name="post_code" style="text-transform:uppercase" required  value="" class="form-control post_code" id="exampleInputName1">
                                                 </div>
                                             </div>
                                         </div>
                                     </fieldset>
                                     <br>
-                                    <input type="button" value="Add New Address" class="btn btn-primary  add add_field_button" id="preview" />
+                                    <input type="button" value="Add New Address" required class="btn btn-primary  add add_field_button" id="preview" />
                                 </div>
 
                             </div>

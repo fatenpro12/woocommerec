@@ -78,9 +78,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-
+         $units=Unit::all();
         $product=$this->product_service->find($id);
-        return view('admin.products.edit',compact('product'));
+        return view('admin.products.edit',compact('product','units'));
     }
 
     /**

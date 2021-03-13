@@ -23,6 +23,8 @@ use App\Services\Period\PeriodService;
 
 use App\Services\Product\IProductService;
 use App\Services\Product\ProductService;
+use App\Services\Shipment\IShipmentService;
+use App\Services\Shipment\ShipmentService;
 use Illuminate\Support\ServiceProvider;
 
 class ServicesServiceProvider extends ServiceProvider
@@ -43,6 +45,10 @@ class ServicesServiceProvider extends ServiceProvider
         $this->app->bind(
             IProductService::class,
             ProductService::class
+        );
+        $this->app->bind(
+            IShipmentService::class,
+            ShipmentService::class
         );
     }
 

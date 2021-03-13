@@ -53,4 +53,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin','
 
     Route::post('/products/upload_image/{id}', 'ProductController@uploadMainImage')->name('products.upload');
     Route::post('/products/upload_others/{id}', 'ProductController@uploadOtherImage')->name('products.upload_others');
+
+    Route::get('shippment/create', 'ShippController@create')->name('shippment.create');
+    Route::get('shippment/edit/{category}', 'ShippController@edit')->name('shippment.edit');
+    Route::post('shippment/store', 'ShippController@store')->name('shippment.store');
+    Route::put('shippment/update/{category}', 'ShippController@update')->name('shippment.update');
+    Route::get('shippments', 'ShippController@index')->name('shippments');
+    Route::get('shippment/delete/{category}', 'ShippController@destroy')->name('shippment.destroy');
 });

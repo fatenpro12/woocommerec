@@ -16,7 +16,7 @@ use Carbon\Carbon;
 class CategoryService implements ICategoryService
 {
 
-    protected $company;
+    protected $category;
 
     function __construct(Category $category) {
         $this->category = $category;
@@ -75,7 +75,7 @@ class CategoryService implements ICategoryService
         return Category::destroy($id);
     }
 
-  public function getActiveCompanyServices(Request $filters)
+  public function getActiveCategoryServices(Request $filters)
     {
 
         $query = Category::query()

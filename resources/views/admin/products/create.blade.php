@@ -148,6 +148,7 @@
 
                                                             <input type="text" name="value[]" required style="text-transform:uppercase"  value="" class="form-control post_code" id="exampleInputName1">
                                                         </div>
+
                                                     </div>
                                                 </div>
 

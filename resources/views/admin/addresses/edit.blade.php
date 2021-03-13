@@ -23,7 +23,7 @@
 
                                                 <select  name="city" class="js-example-tags form-control sel city" >
                                                     @foreach($cities as $city)
-                                                        <option value="{{$city->id}}">{{$city->name}}</option>
+                                                        <option value="{{$city->id}}" {{$address->city_id==$city->id}}>{{$city->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

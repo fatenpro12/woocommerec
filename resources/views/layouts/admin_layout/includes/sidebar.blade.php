@@ -27,7 +27,12 @@
                     <p>Countries</p>
                 </a>
             </li>
-
+            <li class="nav-item " id="shippments">
+                <a class="nav-link" href="{{route('shippments')}}">
+                    <i class="material-icons">send</i>
+                    <p>Shippments</p>
+                </a>
+            </li>
         </ul>
     </div>
 </div>
