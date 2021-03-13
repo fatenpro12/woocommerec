@@ -129,7 +129,7 @@
                                     </form>
                                 </div>
                                 <div class="tab-pane" id="address">
-                                    <form method="Post" action="" class="info">
+                                    <form method="Post" action="" class="address">
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{$product->id}}" id="product_id">
                                         <fieldset id="buildyourform" class="input_fields_wrap">
@@ -295,7 +295,7 @@ var product_id='';
 
             e.preventDefault();
 
-            var data = $('.info').serialize();
+            var data = $('.address').serialize();
 
             var url = '{{ route('address.store') }}';
 

@@ -80,7 +80,10 @@ class ProductController extends Controller
     {
          $units=Unit::all();
         $product=$this->product_service->find($id);
-        return view('admin.products.edit',compact('product','units'));
+        $cities=City::all();
+        //dd($product);
+        $address=Address::find($product->address_id);
+        return view('admin.products.edit',compact('product','units','address','cities'));
     }
 
     /**
@@ -123,7 +126,15 @@ class ProductController extends Controller
             $value=$request['value'][$index];
             $options[$index] = ['key' => $key, 'value' => $value];
         }
+        $unit=Unit::find($request->unit_id);
+        if($unit==null)
+        {
+            $unit= Unit::create(['code'=>$request->unit_id,'name'=>$request->unit_id]);
+        }
         $request['options']=$options;
+        $request['unit_id']=$unit->id;
+        $request['title']=['en'=>$request['title_en'],'ar'=>$request['title_ar']];
+        $request['description']=['en'=>$request['description_en'],'ar'=>$request['description_ar']];
         $product=$this->product_service->update($id,$request->all());
         return $product;
     }

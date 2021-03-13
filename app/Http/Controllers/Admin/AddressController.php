@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Services\Address\IAddressService;
 use Illuminate\Http\Request;
 
@@ -40,7 +41,10 @@ class AddressController extends Controller
     {
 
         $address=$this->address_service->create($request->all());
-        return redirect()->route('addresses');
+        $product=Product::find($request->product_id);
+        $product->address_id=$address->id;
+        $product->save();
+      //  return redirect()->route('addresses');
     }
 
     /**
@@ -77,7 +81,10 @@ class AddressController extends Controller
     {
 
         $address=$this->address_service->update($id,$request->all());
-        return redirect()->route('addresses');
+        $product=Product::find($request->product_id);
+        $product->address_id=$address->id;
+        $product->save();
+      //  return redirect()->route('addresses');
     }
 
     /**
