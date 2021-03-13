@@ -75,13 +75,4 @@ class CategoryService implements ICategoryService
         return Category::destroy($id);
     }
 
-  public function getActiveCategoryServices(Request $filters)
-    {
-
-        $query = Category::query()
-            ->with('products');
-
-        return $query;
-    }
-
 }

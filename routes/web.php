@@ -60,4 +60,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin','
     Route::put('shippment/update/{category}', 'ShippController@update')->name('shippment.update');
     Route::get('shippments', 'ShippController@index')->name('shippments');
     Route::get('shippment/delete/{category}', 'ShippController@destroy')->name('shippment.destroy');
+
+    Route::get('address/create', 'AddressController@create')->name('address.create');
+    Route::get('address/edit/{category}', 'AddressController@edit')->name('address.edit');
+    Route::post('address/store', 'AddressController@store')->name('address.store');
+    Route::put('address/update/{category}', 'AddressController@update')->name('address.update');
+    Route::get('addresses', 'AddressController@index')->name('addresses');
+    Route::get('address/delete/{category}', 'AddressController@destroy')->name('address.destroy');
 });

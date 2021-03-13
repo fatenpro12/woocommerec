@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 
+use App\Services\Address\AddressService;
+use App\Services\Address\IAddressService;
 use App\Services\Category\CategoryService;
 use App\Services\Category\ICategoryService;
 use App\Services\Company\CompanyService;
@@ -49,6 +51,10 @@ class ServicesServiceProvider extends ServiceProvider
         $this->app->bind(
             IShipmentService::class,
             ShipmentService::class
+        );
+        $this->app->bind(
+            IAddressService::class,
+            AddressService::class
         );
     }
 

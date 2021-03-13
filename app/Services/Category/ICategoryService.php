@@ -56,6 +56,5 @@ interface ICategoryService
      * @return Collection<App\Models\Company>
      */
 
-    public function getActiveCompanyServices(Request $filters);
 
 }

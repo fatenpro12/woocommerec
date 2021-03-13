@@ -25,12 +25,12 @@
                                                 Main Data
                                             </a>
                                         </li>
-                                        <!--<li class="nav-item " >
-                                            <a class="nav-link address" id="address1" href="#address" data-toggle="tab" style="display: none">
+                                       <li class="nav-item " >
+                                            <a class="nav-link address" id="address1" href="#address" data-toggle="tab">
                                                 <i class="material-icons"></i>
                                                 Addresses
                                             </a>
-                                        </li>-->
+                                        </li>
                                         <li class="nav-item option" >
                                             <a class="nav-link" id="option1" href="#option" data-toggle="tab">
                                                 <i class="material-icons"></i>
@@ -126,6 +126,45 @@
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary pull-right btn-submit">Save Product</button>
+                                    </form>
+                                </div>
+                                <div class="tab-pane" id="address">
+                                    <form method="Post" action="" class="info">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{$product->id}}" id="product_id">
+                                        <fieldset id="buildyourform" class="input_fields_wrap">
+                                            <div style="border: 1px solid lightgray;padding: 1em;border-radius: 1em;margin-bottom: 1em">
+                                                <div class="row">
+                                                    <div class="col-md-6 form-group" style="text-align: start!important;">
+
+
+                                                        <select  name="city" class="js-example-tags form-control sel city" >
+                                                            @foreach($cities as $city)
+                                                                <option value="{{$city->id}}">{{$city->name}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-6 form-group" style="text-align: start!important;">
+                                                        <label for="nameAr" class="bmd-label-floating" style="text-align: start">{{ __('admin.street') }}</label>
+                                                        <input type="text" name="street" style="text-transform: capitalize;" required  value="" class="form-control street" id="exampleInputName1">
+                                                    </div>
+                                                </div>
+                                                <div class=" row">
+                                                    <div class="col-md-6 form-group" style="text-align: start!important;">
+                                                        <label for="nameAr" class="bmd-label-floating" style="text-align: start">{{ __('admin.house') }}</label>
+
+                                                        <input type="text" name="house_number" required  value="" class="form-control house" id="exampleInputName1">
+                                                    </div>
+                                                    <div class="col-md-6 form-group" style="text-align: start!important;">
+                                                        <label for="nameAr" class="bmd-label-floating" style="text-align: start">{{ __('admin.post_code') }}</label>
+
+                                                        <input type="text" name="post_code" style="text-transform:uppercase" required  value="" class="form-control post_code" id="exampleInputName1">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <button type="submit" class="btn btn-primary pull-right address-submit">Save Address</button>
                                     </form>
                                 </div>
                                 <div class="tab-pane" id="option">
@@ -251,6 +290,28 @@ var product_id='';
                 }
             });
         });
+
+        $(".address-submit").click(function(e){
+
+            e.preventDefault();
+
+            var data = $('.info').serialize();
+
+            var url = '{{ route('address.store') }}';
+
+            $.ajax({
+                url:url,
+                method:'Post',
+                data:data,
+                success:function(response){
+
+                },
+                error:function(error){
+                    console.log(error)
+                }
+            });
+        });
+
         $(".btn-option").click(function(e){
             e.preventDefault();
             var data = $('.option').serialize();
