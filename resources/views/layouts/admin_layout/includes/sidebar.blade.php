@@ -33,6 +33,18 @@
                     <p>Shippments</p>
                 </a>
             </li>
+            <li class="nav-item " id="orders">
+                <a class="nav-link" href="{{route('orders')}}">
+                    <i class="material-icons">cart</i>
+                    <p>Orders</p>
+                </a>
+            </li>
+            <li class="nav-item " id="reported_orders">
+                <a class="nav-link" href="{{route('reported_orders')}}">
+                    <i class="material-icons">cart</i>
+                    <p>Reported Orders</p>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

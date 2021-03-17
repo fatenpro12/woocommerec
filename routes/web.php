@@ -67,4 +67,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin','
     Route::post('address/update/{address}', 'AddressController@update')->name('address.update');
     Route::get('addresses', 'AddressController@index')->name('addresses');
     Route::get('address/delete/{address}', 'AddressController@destroy')->name('address.destroy');
+
+
 });
+Route::get('orders', 'App\Http\Controllers\OrderController@index')->name('orders');
+Route::get('reported_orders', 'App\Http\Controllers\OrderController@reported_orders')->name('reported_orders');
