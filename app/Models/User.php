@@ -6,14 +6,16 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\Permission\Traits\HasRoles;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements HasMedia
+class User extends Authenticatable implements HasMedia,JWTSubject
 {
-    use HasMediaTrait;
-    use HasFactory, Notifiable,HasRoles;
+    use HasMediaTrait,HasApiTokens;
+    use HasFactory, Notifiable;
 
     const USER_ROLE_ADMIN_USER = 'admin';
 
@@ -69,5 +71,20 @@ class User extends Authenticatable implements HasMedia
         return User::whereHas('roles' , function($q ) use ($type){
             $q->where('name', $type);
         })->get();
+    }
+
+    /**
+     * Get the identifier that will be stored in the subject claim of the JWT.
+     *
+     * @return mixed
+     */
+    public function getJWTIdentifier() {
+        // return the primary key of the user - user id
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims() {
+        // return a key value array, containing any custom claims to be added to JWT
+        return [];
     }
 }
